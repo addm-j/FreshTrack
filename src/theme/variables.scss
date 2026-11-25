@@ -1,2 +1,18 @@
-// For information on how to create your own theme, please refer to:
-// https://ionicframework.com/docs/theming/
+:root {
+    //zatím zelená možná to změníme
+    /** Primární barva **/
+    --ion-color-primary: #16a34a;
+    --ion-color-primary-rgb: 22, 163, 74;
+    --ion-color-primary-contrast: #ffffff;
+    --ion-color-primary-contrast-rgb: 255, 255, 255;
+    --ion-color-primary-shade: #138f41;
+    --ion-color-primary-tint: #2dac5c;
+
+    /** Sekundární barva **/
+    --ion-color-secondary: #0284c7;
+    --ion-color-secondary-rgb: 2, 132, 199;
+    --ion-color-secondary-contrast: #ffffff;
+    --ion-color-secondary-contrast-rgb: 255, 255, 255;
+    --ion-color-secondary-shade: #0274af;
+    --ion-color-secondary-tint: #1b90cd;
+}
