@@ -1,0 +1,7 @@
+{
+  "name": "freshtrack",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
