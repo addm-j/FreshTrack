@@ -1,1 +1,21 @@
+.freshtrack-tab-bar {
+  --background: var(--ion-card-background);
+  border-top: 1px solid rgba(148, 163, 184, 0.2);
+  height: 62px;
+  padding-bottom: env(safe-area-inset-bottom);
 
+  ion-tab-button {
+    --color: #64748b;
+    --color-selected: var(--ion-color-primary);
+    font-weight: 500;
+
+    ion-icon {
+      font-size: 23px;
+    }
+
+    ion-label {
+      font-size: 11px;
+      margin-top: 3px;
+    }
+  }
+}
