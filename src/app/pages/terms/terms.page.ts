@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import {
   IonHeader,
   IonToolbar,
@@ -7,13 +8,16 @@ import {
   IonTitle,
   IonContent,
   IonCard,
-  IonCardHeader,
-  IonCardTitle,
   IonCardContent,
   IonIcon,
+  IonButton,
 } from '@ionic/angular';
 import { addIcons } from 'ionicons';
-import { documentTextOutline, shieldCheckmarkOutline } from 'ionicons/icons';
+import {
+  documentTextOutline,
+  shieldCheckmarkOutline,
+  timeOutline,
+} from 'ionicons/icons';
 
 @Component({
   selector: 'app-terms',
@@ -21,6 +25,7 @@ import { documentTextOutline, shieldCheckmarkOutline } from 'ionicons/icons';
   styleUrls: ['./terms.page.scss'],
   standalone: true,
   imports: [
+    RouterLink,
     IonHeader,
     IonToolbar,
     IonButtons,
@@ -28,14 +33,13 @@ import { documentTextOutline, shieldCheckmarkOutline } from 'ionicons/icons';
     IonTitle,
     IonContent,
     IonCard,
-    IonCardHeader,
-    IonCardTitle,
     IonCardContent,
     IonIcon,
+    IonButton,
   ],
 })
 export class TermsPage {
   constructor() {
-    addIcons({ documentTextOutline, shieldCheckmarkOutline });
+    addIcons({ documentTextOutline, shieldCheckmarkOutline, timeOutline });
   }
 }

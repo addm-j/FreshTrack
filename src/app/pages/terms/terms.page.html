@@ -1,13 +1,89 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>terms</ion-title>
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar class="terms-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/login" text="Zpět"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Podmínky a soukromí</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">terms</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="terms-content">
+  <div class="terms-wrapper">
+    <!-- Hlavička ve stejném stylu jako na loginu -->
+    <div class="brand-header">
+      <div class="logo-circle">
+        <ion-icon name="shield-checkmark-outline"></ion-icon>
+      </div>
+      <h1>Podmínky & Soukromí</h1>
+      <p>Pravidla používání aplikace FreshTrack</p>
+    </div>
+
+    <!-- Hlavní karta s textem -->
+    <ion-card class="terms-card">
+      <ion-card-content>
+        <div class="last-updated">
+          <ion-icon name="time-outline"></ion-icon>
+          <span>Poslední aktualizace: Listopad 2026</span>
+        </div>
+
+        <section class="terms-section">
+          <h2>1. Úvodní ustanovení</h2>
+          <p>
+            Vítejte v aplikaci <strong>FreshTrack</strong> (Chytrá lednice). Používáním této mobilní aplikace souhlasíte s těmito podmínkami použití. Aplikace slouží k evidenci domácích zásob potravin, sledování data spotřeby a správě nákupních seznamů za účelem omezení plýtvání jídlem.
+          </p>
+        </section>
+
+        <section class="terms-section">
+          <h2>2. Uživatelský účet a režim hosta</h2>
+          <p>
+            Do aplikace se můžete přihlásit pomocí e-mailu a hesla, nebo využít rychlý režim <strong>Host</strong> (anonymní účet).
+          </p>
+          <ul>
+            <li>Uživatel je povinen chránit své přihlašovací údaje před zneužitím.</li>
+            <li>Při využití režimu <em>Host</em> jsou data vázána na konkrétní instalaci zařízení a při odinstalaci aplikace nebo odhlášení může dojít k jejich nevratné ztrátě.</li>
+            <li>V případě propojení účtů do <strong>sdílené domácnosti</strong> získávají všichni její členové přístup ke společným zásobám a nákupnímu seznamu.</li>
+          </ul>
+        </section>
+
+        <section class="terms-section">
+          <h2>3. Ochrana osobních údajů (GDPR)</h2>
+          <p>
+            Vaše soukromí bereme vážně. Pro fungování aplikace zpracováváme pouze nezbytně nutné údaje:
+          </p>
+          <ul>
+            <li><strong>Autentizační údaje:</strong> E-mailová adresa a unikátní identifikátor účtu (spravováno bezpečně přes službu Google Firebase Authentication).</li>
+            <li><strong>Uživatelská data:</strong> Seznam uložených potravin, data spotřeby, nákupní seznamy a statistiky spotřeby uložené v databázi Cloud Firestore.</li>
+            <li>Vaše data nejsou prodávána ani předávána třetím stranám pro marketingové účely.</li>
+          </ul>
+        </section>
+
+        <section class="terms-section">
+          <h2>4. Skenování čárových kódů a oprávnění</h2>
+          <p>
+            Pro načítání produktů pomocí EAN kódů vyžaduje aplikace přístup ke <strong>kameře zařízení</strong>. Obraz z kamery je zpracováván pouze lokálně v reálném čase za účelem rozpoznání kódu a nikam se neukládá ani neodesílá.
+          </p>
+          <p>
+            Informace o naskenovaných produktech jsou získávány z veřejné databáze <em>Open Food Facts</em>. Za správnost údajů o složení či trvanlivosti ručí vždy údaj uvedený přímo na fyzickém obalu výrobku.
+          </p>
+        </section>
+
+        <section class="terms-section">
+          <h2>5. Odpovědnost a notifikace</h2>
+          <p>
+            Výpočet zbývající trvanlivosti po otevření balení i zasílání lokálních notifikací mají pouze <strong>informativní charakter</strong>. Před konzumací potraviny vždy zkontrolujte její skutečný stav a údaje na obalu. Provozovatel nenese odpovědnost za případnou zdravotní újmu či škodu způsobenou konzumací zkažených potravin nebo výpadkem notifikací na zařízení.
+          </p>
+        </section>
+
+        <div class="divider">
+          <span>FreshTrack</span>
+        </div>
+
+        <ion-button expand="block" class="accept-btn" routerLink="/login">
+          Rozumím a souhlasím
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+
+  
+  </div>
 </ion-content>
