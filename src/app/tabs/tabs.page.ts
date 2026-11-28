@@ -1,5 +1,5 @@
 import { Component, EnvironmentInjector, inject } from '@angular/core';
-import { IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel, IonBadge } from '@ionic/angular';
+import { IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel} from '@ionic/angular';
 import { addIcons } from 'ionicons';
 import { snowOutline, barcodeOutline, cartOutline } from 'ionicons/icons';
 
@@ -7,7 +7,7 @@ import { snowOutline, barcodeOutline, cartOutline } from 'ionicons/icons';
   selector: 'app-tabs',
   templateUrl: 'tabs.page.html',
   styleUrls: ['tabs.page.scss'],
-  imports: [IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel, IonBadge],
+  imports: [IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel],
 })
 export class TabsPage {
   public environmentInjector = inject(EnvironmentInjector);

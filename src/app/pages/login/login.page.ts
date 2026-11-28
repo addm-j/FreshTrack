@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, NgZone, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import {
@@ -24,6 +24,8 @@ import {
   alertCircleOutline,
 } from 'ionicons/icons';
 
+import { FirebaseAuthService } from '../../services/firebase-auth.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -47,6 +49,9 @@ import {
 })
 export class LoginPage {
   private router = inject(Router);
+  private authService = inject(FirebaseAuthService);
+  private ngZone = inject(NgZone);
+  private cdr = inject(ChangeDetectorRef);
 
   authMode: 'login' | 'register' = 'login';
   email = '';
@@ -76,7 +81,7 @@ export class LoginPage {
     this.showPassword = !this.showPassword;
   }
 
-  onSubmit(): void {
+  async onSubmit(): Promise<void> {
     const trimmedEmail = this.email.trim();
 
     if (!trimmedEmail || !this.password) {
@@ -95,12 +100,54 @@ export class LoginPage {
       return;
     }
 
-    this.errorMessage = ''; //zde bude pak Firebase
-    this.router.navigateByUrl('/tabs/tab1', { replaceUrl: true });
+    this.errorMessage = '';
+    this.isLoading = true;
+    this.cdr.detectChanges();
+
+    try {
+      if (this.authMode === 'login') {
+        await this.authService.login(trimmedEmail, this.password);
+      } else {
+        await this.authService.register(trimmedEmail, this.password);
+      }
+      await this.ngZone.run(() =>
+        this.router.navigateByUrl('/tabs/tab1', { replaceUrl: true })
+      );
+    } catch (error) {
+      this.ngZone.run(() => {
+        this.errorMessage = this.authService.mapAuthError(error);
+        this.isLoading = false;
+        this.cdr.detectChanges();
+      });
+    } finally {
+      this.ngZone.run(() => {
+        this.isLoading = false;
+        this.cdr.detectChanges();
+      });
+    }
   }
 
-  continueAsGuest(): void {
+  async continueAsGuest(): Promise<void> {
     this.errorMessage = '';
-    this.router.navigateByUrl('/tabs/tab1', { replaceUrl: true });
+    this.isLoading = true;
+    this.cdr.detectChanges();
+
+    try {
+      await this.authService.loginAsGuest();
+      await this.ngZone.run(() =>
+        this.router.navigateByUrl('/tabs/tab1', { replaceUrl: true })
+      );
+    } catch (error) {
+      this.ngZone.run(() => {
+        this.errorMessage = this.authService.mapAuthError(error);
+        this.isLoading = false;
+        this.cdr.detectChanges();
+      });
+    } finally {
+      this.ngZone.run(() => {
+        this.isLoading = false;
+        this.cdr.detectChanges();
+      });
+    }
   }
 }

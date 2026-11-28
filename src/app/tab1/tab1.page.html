@@ -1,6 +1,12 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title> Tab 1 </ion-title>
+    <ion-title>Moje lednice</ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="danger" (click)="logout()">
+        <ion-icon slot="start" name="log-out-outline"></ion-icon>
+        Odhlásit
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
